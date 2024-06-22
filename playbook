@@ -1,0 +1,15 @@
+---    
+
+-hosts:all
+ become:True  
+
+ tasks:
+ - name: Install apche on ubuntu
+   apt: name=apache2 state=present
+   when: ansible_os_family == "Debian"
+   igore_errors: True
+
+ - name: Install httpd on Red Hat
+   apt: name=httpd state=present
+   when: ansible_os_family == "RedHat"
+   igore_errors: True
